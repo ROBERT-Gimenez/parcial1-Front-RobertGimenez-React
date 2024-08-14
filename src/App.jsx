@@ -1,14 +1,26 @@
 
+import { useState } from 'react';
 import './App.css'
-import Show from './components/Show'
+import Form from './components/Form'
+import Card from './components/Card';
 
-function App() {
+const App = () => {
+  const [formData, setFormData] = useState(null);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  const handleFormSubmit = (data) => {
+    setFormData(data);
+    setHasSubmitted(true);
+  };
 
   return (
-    <>
-     <Show/>
-    </>
-  )
-}
+    <div className="App-content">
+      <Form onSubmit={handleFormSubmit} />
+      {hasSubmitted && formData && (
+        <Card name={formData.name} phone={formData.phone} />
+      )}
+    </div>
+  );
+};
 
 export default App
