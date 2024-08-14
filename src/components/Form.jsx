@@ -37,20 +37,26 @@ const Form = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Nombre"
-      />
-      <input
-        type="phone"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-        placeholder="Telefono"
-      />
-      <button type="submit">Submit</button>
+    <form className='form-content' onSubmit={handleSubmit}>
+      <h2>Necesitas ayuda con react?</h2>
+      <h3>Dejanos tus datos</h3>
+
+      <div className='input-content'>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Nombre"
+          />
+        <input
+          type="phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="Telefono"
+          />
+        </div>
+
+      <button className='btn-form' type="submit">Enviar</button>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </form>

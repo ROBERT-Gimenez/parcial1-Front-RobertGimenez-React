@@ -13,11 +13,16 @@ const App = () => {
     setHasSubmitted(true);
   };
 
+  const handleReset = () => {
+    setFormData(null);
+    setHasSubmitted(false);
+  };
+
   return (
     <div className="App-content">
-      <Form onSubmit={handleFormSubmit} />
+      {!hasSubmitted && <Form onSubmit={handleFormSubmit} />}
       {hasSubmitted && formData && (
-        <Card name={formData.name} phone={formData.phone} />
+        <Card name={formData.name} phone={formData.phone}  onReset={handleReset} />
       )}
     </div>
   );
